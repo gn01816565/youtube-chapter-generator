@@ -12,6 +12,7 @@
 - ⏱️ **精確時間戳** - 自動格式化為 YouTube 格式（M:SS 或 H:MM:SS）
 - 🎵 **多格式支援** - `.mp3`, `.wav`, `.flac`, `.m4a`, `.ogg`
 - 🌈 **彩色輸出** - 清楚的終端機顯示
+- 📝 **多種輸出格式** - 純文字、JSON、完整 YouTube 說明欄 (v1.1+)
 
 ## 📋 系統需求
 
@@ -89,28 +90,87 @@ my_music/
 ./generate_chapters.sh <音訊檔案目錄>
 ```
 
-### 指定輸出檔案
+### 輸出格式
 
+支援三種輸出格式：
+
+#### 1️⃣ 純文字格式（預設）
 ```bash
-./generate_chapters.sh <音訊檔案目錄> <輸出檔案>
-```
-
-### 範例
-
-```bash
-# 使用預設輸出檔案 (chapters.txt)
 ./generate_chapters.sh ./music
-
-# 指定輸出檔案
-./generate_chapters.sh ./music my_chapters.txt
-
-# 絕對路徑
-./generate_chapters.sh /path/to/music /path/to/output.txt
+# 或
+./generate_chapters.sh ./music --format text
 ```
 
-### 查看說明
+輸出：
+```
+0:00 Song Name
+2:39 Another Song
+5:54 Final Track
+```
+
+#### 2️⃣ JSON 格式
+```bash
+./generate_chapters.sh ./music --format json -o chapters.json
+```
+
+輸出：
+```json
+{
+  "generator": "youtube-chapter-generator",
+  "version": "1.1.0",
+  "total_duration": "14:18",
+  "total_seconds": 858,
+  "chapters": [
+    {"time": "0:00", "time_seconds": 0, "title": "Song Name"},
+    {"time": "2:39", "time_seconds": 159, "title": "Another Song"}
+  ]
+}
+```
+
+#### 3️⃣ YouTube 完整說明欄格式
+```bash
+./generate_chapters.sh ./music --format youtube \
+  --title "My Music Mix" \
+  --tags "music,lofi,chill"
+```
+
+輸出：
+```
+My Music Mix
+
+---
+
+🕐 章節 / Chapters:
+
+0:00 Song Name
+2:39 Another Song
+5:54 Final Track
+
+⏱️ 總時長 / Total Duration: 14:18
+
+---
+
+#music #lofi #chill
+```
+
+### 完整參數說明
 
 ```bash
+# 指定輸出檔案
+./generate_chapters.sh ./music -o output.txt
+
+# JSON 格式輸出
+./generate_chapters.sh ./music --format json -o data.json
+
+# YouTube 完整格式
+./generate_chapters.sh ./music --format youtube \
+  --title "Late Night Vibes" \
+  --tags "nightdrive,lofi,jazz"
+
+# 查看版本
+./generate_chapters.sh --version
+
+# 查看說明
 ./generate_chapters.sh --help
 ```
 
