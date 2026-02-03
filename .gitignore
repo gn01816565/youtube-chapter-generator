@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Output files
+chapters.txt
+*.txt
+!examples/**/*.txt
+
+# Audio files (for testing)
+*.mp3
+*.wav
+*.flac
+*.m4a
+*.ogg
+!examples/**/*.mp3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test output
+test_output/

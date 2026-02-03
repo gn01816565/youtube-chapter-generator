@@ -1,0 +1,10 @@
+# YouTube 章節時間戳
+# 產生時間: 2026-02-03 08:00:00
+# 來源目錄: ./sample_music
+
+0:00 Tokyo Neon City Pop
+2:39 Midnight Drive
+5:54 Paper Cups in Tokyo
+8:21 Room For One
+11:02 Quiet Corners
+14:18 Late Night Vibes
